@@ -34,3 +34,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 🪄 ブランチ運用ルール
+
+| ブランチ名 | 目的 |
+|-------------|------|
+| `main` | 公開用・リリース済み |
+| `develop` | 開発統合用（動作確認用） |
+| `feature/*` | 機能単位（作業ブランチ） |
+| `fix/*` | バグ修正用（optional） |
+| `docs/*` | ドキュメントのみ変更用（READMEや設計書など） |
+
+---
+
+## 💬 コミットメッセージ規約
+
+**format:**
+<type>: <summary>
+
+**types:**
+| type | 用途 |
+|------|------|
+| `feat` | 機能追加 |
+| `fix` | バグ修正 |
+| `chore` | 設定・依存関係 |
+| `docs` | ドキュメント |
+| `style` | 見た目のみ |
+| `refactor` | リファクタリング |
+| `perf` | パフォーマンス改善 |
+| `test` | テスト追加 |
+
