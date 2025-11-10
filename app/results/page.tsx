@@ -1,17 +1,26 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import resultsData from "../_data/results.json";
-import eventsData from "../_data/events.json";
+import { useEffect, useMemo, useState } from "react";
 import type { Event, Result, Organization } from "@/types/domain";
 import { formatDate, orgBadgeClass } from "@/lib/utils";
 import Layout from "@/components/Layout";
 import PageTitle from "@/components/PageTitle";
-
-const events = eventsData as Event[];
-const results = resultsData as Result[];
+import { fetchEvents } from "@/lib/fetchEvents";
+import { fetchResults } from "@/lib/fetchResults";
 
 export default function ResultsPage() {
+  const [events, setEvents] = useState<Event[]>([]);
+  useEffect(() => {
+    // 今はローカルJSONを返すだけ
+    fetchEvents().then(setEvents);
+  }, []);
+
+  const [results, setResults] = useState<Result[]>([]);
+  useEffect(() => {
+    // 今はローカルJSONを返すだけ
+    fetchResults().then(setResults);
+  }, []);
+
   // 組織の選択肢は events から引っ張る
   const organizations = Array.from(
     new Set(events.map((e) => e.organization)),
