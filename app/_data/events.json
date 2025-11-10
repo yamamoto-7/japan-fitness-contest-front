@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "name": "FWJ BEEF SASAKI CLASSIC",
+    "organization": "FWJ",
+    "date": "2025-11-22",
+    "location": "東京",
+    "participants": ["山田 太郎", "佐藤 花", "John Doe", "鈴木 一郎"]
+  },
+  {
+    "id": 2,
+    "name": "JBBF 日本選手権",
+    "organization": "JBBF",
+    "date": "2025-11-23",
+    "location": "大阪",
+    "participants": []
+  },
+  {
+    "id": 3,
+    "name": "IFBB PRO JAPAN CLASSIC",
+    "organization": "IFBB",
+    "date": "2025-12-01",
+    "location": "東京"
+  },
+  {
+    "id": 4,
+    "name": "JBBF 日本クラス別",
+    "organization": "JBBF",
+    "date": "2025-11-22",
+    "location": "東京",
+    "participants": ["山田 太郎", "佐藤 花", "John Doe", "鈴木 一郎"]
+  },
+  {
+    "id": 5,
+    "name": "IFBB ワールドカップ",
+    "organization": "JBBF",
+    "date": "2025-11-22",
+    "location": "東京",
+    "participants": ["山田 太郎", "佐藤 花", "John Doe", "鈴木 一郎"]
+  },
+  {
+    "id": 6,
+    "name": "Beef Sasaki",
+    "organization": "FWJ",
+    "date": "2025-11-23",
+    "location": "大阪",
+    "participants": []
+  }
+]
