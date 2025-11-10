@@ -1,14 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Layout from "@/components/Layout";
-import eventsData from "../_data/events.json";
 import { formatDate, orgBadgeClass } from "@/lib/utils";
 import type { Event } from "@/types/domain";
 import PageTitle from "@/components/PageTitle";
+import { fetchEvents } from "@/lib/fetchEvents";
 
 export default function CalendarPage() {
-  const events = eventsData as Event[];
+  const [events, setEvents] = useState<Event[]>([]);
+  useEffect(() => {
+    // 今はローカルJSONを返すだけ
+    fetchEvents().then(setEvents);
+  }, []);
 
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());

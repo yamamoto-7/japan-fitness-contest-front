@@ -1,15 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import eventsData from "./_data/events.json";
-import type { Event, Result, Organization } from "@/types/domain";
+import type { Event } from "@/types/domain";
 import { formatDate, orgBadgeClass } from "@/lib/utils";
 import Layout from "@/components/Layout";
 import PageTitle from '../components/PageTitle';
-
-const events = eventsData as Event[];
+import { useEffect, useState } from "react";
+import { fetchEvents } from "@/lib/fetchEvents";
 
 export default function HomePage() {
+  const [events, setEvents] = useState<Event[]>([]);
+  useEffect(() => {
+    // 今はローカルJSONを返すだけ
+    fetchEvents().then(setEvents);
+  }, []);
+
   // 日付が新しい順にして上から3つくらい
   const sorted = [...events].sort((a, b) => {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
