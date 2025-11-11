@@ -37,12 +37,13 @@ export default function HomePage() {
             >
               大会カレンダーへ
             </Link>
-            <Link
+            {/* TODO: 結果ページはPhase2以降 */}
+            {/* <Link
               href="/results"
               className="rounded-md bg-white px-4 py-2 text-sm font-medium text-blue-700 border border-blue-100 hover:bg-blue-50 transition"
             >
               結果一覧へ
-            </Link>
+            </Link> */}
           </div>
         </section>
 

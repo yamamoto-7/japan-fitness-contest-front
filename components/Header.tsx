@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 const nav = [
   { href: "/", label: "トップ" },
   { href: "/calendar", label: "日程" },
-  { href: "/results", label: "結果" },
+  // TODO: 結果ページはPhase2以降
+  // { href: "/results", label: "結果" },
 ];
 
 export default function Header() {
