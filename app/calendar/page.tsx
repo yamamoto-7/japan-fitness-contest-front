@@ -6,12 +6,16 @@ import { formatDate, orgBadgeClass } from "@/lib/utils";
 import type { Event } from "@/types/domain";
 import PageTitle from "@/components/PageTitle";
 import { fetchEvents } from "@/lib/fetchEvents";
+import Loading from "@/components/Loading";
 
 export default function CalendarPage() {
   const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // 今はローカルJSONを返すだけ
-    fetchEvents().then(setEvents);
+    fetchEvents()
+      .then((data) => setEvents(data))
+      .finally(() => setLoading(false));
   }, []);
 
   const today = new Date();
@@ -53,6 +57,11 @@ export default function CalendarPage() {
       setMonth((m) => m + 1);
     }
   };
+
+  
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <Layout>
