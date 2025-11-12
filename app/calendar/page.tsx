@@ -6,6 +6,7 @@ import { formatDate, orgBadgeClass } from "@/lib/utils";
 import type { Event } from "@/types/domain";
 import PageTitle from "@/components/PageTitle";
 import { fetchEvents } from "@/lib/fetchEvents";
+import Loading from "@/components/Loading";
 
 export default function CalendarPage() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -59,7 +60,7 @@ export default function CalendarPage() {
 
   
   if (loading) {
-    return <p className="h-screen w-screen flex justify-center items-center text-sm text-slate-400">カレンダーを読み込み中...</p>;
+    return <Loading />
   }
 
   return (
