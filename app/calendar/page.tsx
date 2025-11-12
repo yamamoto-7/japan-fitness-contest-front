@@ -9,9 +9,12 @@ import { fetchEvents } from "@/lib/fetchEvents";
 
 export default function CalendarPage() {
   const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // 今はローカルJSONを返すだけ
-    fetchEvents().then(setEvents);
+    fetchEvents()
+      .then((data) => setEvents(data))
+      .finally(() => setLoading(false));
   }, []);
 
   const today = new Date();
@@ -53,6 +56,11 @@ export default function CalendarPage() {
       setMonth((m) => m + 1);
     }
   };
+
+  
+  if (loading) {
+    return <p className="h-screen w-screen flex justify-center items-center text-sm text-slate-400">カレンダーを読み込み中...</p>;
+  }
 
   return (
     <Layout>
