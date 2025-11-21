@@ -2,13 +2,23 @@
 import { useRouter } from "next/navigation";
 import { adminFetch } from "@/lib/adminClient";
 import { setAccessToken } from "@/lib/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AdminLogin() {
   const [loginID,setLoginID]=useState('');
   const [password,setPassword]=useState('');
   const [err,setErr]=useState('');
   const router = useRouter();
+
+  // ★ ログイン済なら強制リダイレクト
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("adminToken");
+      if (token) {
+        router.replace("/admin/events"); // ← 無限ループを避けるため replace を使う
+      }
+    }
+  }, [router]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -25,8 +35,12 @@ export default function AdminLogin() {
       return;
     }
     const data = await res.json(); // { access_token, expires_in ... }
-    setAccessToken(data.access_token);
-    router.push('/admin/events/new');
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('adminToken', data.access_token);
+    }
+    
+    router.push('/admin/events/');
   }
 
   return (
