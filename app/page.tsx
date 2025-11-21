@@ -7,12 +7,16 @@ import Layout from "@/components/Layout";
 import PageTitle from '../components/PageTitle';
 import { useEffect, useState } from "react";
 import { fetchEvents } from "@/lib/fetchEvents";
+import Loading from "@/components/Loading";
 
 export default function HomePage() {
   const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // 今はローカルJSONを返すだけ
-    fetchEvents().then(setEvents);
+    fetchEvents()
+      .then((data) => setEvents(data))
+      .finally(() => setLoading(false));
   }, []);
 
   // 日付が新しい順にして上から3つくらい
@@ -49,6 +53,9 @@ export default function HomePage() {
 
         {/* 直近の大会 */}
         <section>
+          { loading && (
+            <Loading />
+          )}
           <div className="flex items-center justify-between mb-4">
             <PageTitle title="直近の大会" />
           </div>
